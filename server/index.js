@@ -4,14 +4,22 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-console.log(process.env.MONGODB_URL)
 
+app.use(cors());
+
+// Middleware for parsing request body
+app.use(express.json());
+
+
+// Importing Route Handler
+const shelterRoutes = require('./routes/shelterRoutes');
+app.use('/shelter', shelterRoutes)
 
 mongoose
     .connect(process.env.MONGODB_URL)
     .then(()=> {
         console.log('App has connected to database');
-        app.listen(process.env.PORT, ()=>{
+        app.listen(process.env.PORT, ()=> {
             console.log(`App is listening on port ${process.env.PORT}`)
         })
     })
