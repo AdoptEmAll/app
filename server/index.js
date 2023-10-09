@@ -10,7 +10,6 @@ app.use(cors());
 // Middleware for parsing request body
 app.use(express.json());
 
-
 // Importing Route Handler
 const shelterRoutes = require('./routes/shelterRoutes');
 app.use('/shelter', shelterRoutes)

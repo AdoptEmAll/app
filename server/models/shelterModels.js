@@ -1,21 +1,19 @@
 const mongoose = require('mongoose');
+const Pet = require('./petModels');
 
 const shelterSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
     location: {
         type: String,
         required: true,
     },
-    availability: {
-        type: Boolean,
-        required: true,
-    },
-    pets: {
-        type: [String]
-    },
-    name: {
-        type: String,
-        required: true,
-    }
+    pets: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Pet',
+    }],
 }
 )
 
