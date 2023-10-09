@@ -15,6 +15,7 @@ const createPet = async(req, res) => {
             name: req.body.name,
             breed: req.body.breed,
             age: req.body.age,
+            availability: req.body.availability,
             location: req.body.location,
         }
 
