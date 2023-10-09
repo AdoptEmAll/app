@@ -11,7 +11,7 @@ const createPet = async(req, res) => {
             })
         }
         const newPet = {
-            Pic: req.body.picture,
+            picture: req.body.picture,
             name: req.body.name,
             breed: req.body.breed,
             age: req.body.age,
