@@ -15,6 +15,9 @@ app.use(express.json());
 const shelterRoutes = require('./routes/shelterRoutes');
 app.use('/shelter', shelterRoutes)
 
+const petRoutes = require('./routes/petRoutes');
+app.use('/pet', petRoutes)
+
 mongoose
     .connect(process.env.MONGODB_URL)
     .then(()=> {

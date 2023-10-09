@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const petrSchema = mongoose.Schema({
+const petSchema = mongoose.Schema({
     picture:{
-        type:
+        type: String
     },
     name: {
         type: String,
@@ -25,6 +25,6 @@ const petrSchema = mongoose.Schema({
 }
 )
 
-const Pet = mongoose.model('Pet', petrSchema)
+const Pet = mongoose.model('Pet', petSchema)
 
 module.exports = Pet
