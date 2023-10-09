@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Pet = require('./Pet');
+const Pet = require('./petModels');
 
 const shelterSchema = mongoose.Schema({
     name: {
