@@ -17,6 +17,9 @@ app.use('/shelter', shelterRoutes)
 const petRoutes = require('./routes/petRoutes');
 app.use('/pet', petRoutes)
 
+const accountRoutes = require('./routes/accountRoutes');
+app.use('/account', accountRoutes)
+
 mongoose
     .connect(process.env.MONGODB_URL)
     .then(()=> {
