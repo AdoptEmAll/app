@@ -67,7 +67,7 @@ const updatePet = async (req, res) => {
             !req.body.location ||
         ) {
             return res.status(400).send({
-                message: 'Send all required fields(name and location)'
+                message: 'Send all required fields(name, availability, and location)'
             });
         }
 
@@ -76,7 +76,7 @@ const updatePet = async (req, res) => {
     
         if (!result) {
             return res.status(404).json({
-                message: 'Pet no found'
+                message: 'Pet not found'
             });
         }
         return res.status(200).send({
