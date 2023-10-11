@@ -10,6 +10,13 @@ const shelterSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    phoneNumber: {
+        type: String,
+        required: true,
+    },
+    photo: {
+        type: String,
+    },
     pets: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Pet',

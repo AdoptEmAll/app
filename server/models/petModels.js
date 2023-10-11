@@ -12,7 +12,7 @@ const petSchema = mongoose.Schema({
         type: String, 
     },
     age: {
-        type: Intger
+        type: Number
     },
     availability: {
         type: Boolean,

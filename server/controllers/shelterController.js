@@ -5,15 +5,18 @@ const createShelter = async(req, res) => {
     try {
         if (
             !req.body.location ||
-            !req.body.name
+            !req.body.name ||
+            !req.body.phoneNumber
             ) {
             return res.status(400).send({
-                message: 'Missing Location or Name for Shelter'
+                message: 'Missing Location or Name or Phone Number for Shelter'
             })
         }
         const newShelter = {
             name: req.body.name,
             location: req.body.location,
+            phoneNumber: req.body.phoneNumber,
+            photo: req.body.photo,
             pets: req.body.pets,
         }
 
@@ -58,7 +61,8 @@ const updateShelter = async (req, res) => {
     try {
         if (
             !req.body.name ||
-            !req.body.location
+            !req.body.location ||
+            !req.body.phoneNumber
         ) {
             return res.status(400).send({
                 message: 'Send all required fields(name and location)'
@@ -73,7 +77,7 @@ const updateShelter = async (req, res) => {
                 message: 'Shelter no found'
             });
         }
-        return res.stauts(200).send({
+        return res.status(200).send({
             message: 'Shelter Info Updated'
         }) ;
     } catch(err) {
