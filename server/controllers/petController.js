@@ -62,10 +62,7 @@ const getPet = async (req, res) => {
 const updatePet = async (req, res) => {
     try {
         if (
-            !req.body.picture ||
             !req.body.name ||
-            !req.body.breed ||
-            !req.body.age ||
             !req.body.availability ||
             !req.body.location ||
         ) {
