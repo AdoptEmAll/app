@@ -64,7 +64,7 @@ const updatePet = async (req, res) => {
         if (
             !req.body.name ||
             !req.body.availability ||
-            !req.body.location ||
+            !req.body.location
         ) {
             return res.status(400).send({
                 message: 'Send all required fields(name, availability, and location)'
