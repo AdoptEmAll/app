@@ -1,11 +1,8 @@
-import React, {
-  ChangeEventHandler,
-  FormEventHandler,
-  ReactEventHandler,
-} from "react";
+import React, { type FC } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import InputField from "../../components/InputField";
 
 interface ShelterData {
   name: string;
@@ -15,7 +12,7 @@ interface ShelterData {
   pets: string[];
 }
 
-const CreateShelter = () => {
+const CreateShelter: FC = () => {
   const [shelterData, setShelterData] = useState<ShelterData>({
     name: "",
     location: "",
@@ -53,53 +50,61 @@ const CreateShelter = () => {
     }
   };
 
+  const inputFields = [
+    {
+      label: "Name",
+      name: "name",
+      type: "text",
+      placeholder: "Shelter Name Here",
+      required: true,
+    },
+    {
+      label: "Location",
+      name: "location",
+      type: "text",
+      placeholder: "Location",
+      required: true,
+    },
+    {
+      label: "Phone Number",
+      name: "phoneNumber",
+      type: "text",
+      placeholder: "Phone Number",
+      required: true,
+    },
+    {
+      label: "Photo Url",
+      name: "photo",
+      type: "text",
+      placeholder: "Photo Url",
+    },
+  ];
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setShelterData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
   return (
-    <div>
-      <form onSubmit={createNewShelter}>
-        <label>Name:</label>
-        <input
-          type="text"
-          placeholder="Shelter Name Here"
-          required
-          value={shelterData.name}
-          onChange={(e) =>
-            setShelterData({ ...shelterData, name: e.target.value })
-          }
+    <form onSubmit={createNewShelter}>
+      {inputFields.map((field) => (
+        <InputField
+          key={field.name}
+          label={field.label}
+          name={field.name}
+          type={field.type}
+          placeholder={field.placeholder}
+          value={shelterData[field.name]}
+          required={field.required}
+          onChangeCb={handleInputChange}
         />
-        <label>Location:</label>
-        <input
-          type="text"
-          placeholder="Location"
-          required
-          value={shelterData.location}
-          onChange={(e) =>
-            setShelterData({ ...shelterData, location: e.target.value })
-          }
-        />
-        <label>Phone Number:</label>
-        <input
-          type="text"
-          placeholder="Phone Number"
-          required
-          value={shelterData.phoneNumber}
-          onChange={(e) =>
-            setShelterData({ ...shelterData, phoneNumber: e.target.value })
-          }
-        />
-        <label>Photo Url:</label>
-        <input
-          type="text"
-          placeholder="Photo Url"
-          value={shelterData.photo}
-          onChange={(e) =>
-            setShelterData({ ...shelterData, photo: e.target.value })
-          }
-        />
-        <button type="submit">Create</button>
-      </form>
-    </div>
+      ))}
+      <button type="submit">Create</button>
+    </form>
   );
 };
 
 export default CreateShelter;
-
