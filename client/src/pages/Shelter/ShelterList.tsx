@@ -2,30 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-
-interface Pet {
-  picture: string;
-  name: string;
-  breed: string;
-  age: number;
-  availability: boolean;
-  location: string;
-}
-
-interface Shelter {
-  name: string;
-  location: string;
-  phoneNumber: string;
-  photo: string;
-  pets: Pet[];
-}
-
-export interface ShelterData {
-  data: Shelter[];
-}
+import { type ShelterData } from "../../components/types/shelter";
 
 const ShelterList = () => {
-  const [shelters, setShelters] = useState<ShelterData | null>(null);
+  const [shelters, setShelters] = useState<ShelterData>();
 
   const shelterListClass = "grid grid-cols-2 gap-4";
 
@@ -44,7 +24,6 @@ const ShelterList = () => {
       toast.error("Failed to get shelters");
     }
   };
-
   useEffect(() => {
     getShelters();
   }, []);
